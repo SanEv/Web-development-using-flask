@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+      .center {
+        text-align: center;
+      }
+
+      form {
+
+        padding-top: 300px;
+        font-size: 40px;
+        }
+        input[type="submit"] {
+            font-size: 25px;
+         }
+         p {
+         text-align: center;
+      }
+    </style>
+    <meta charset="UTF-8">
+    <title>Abuse Detection</title>
+</head>
+<body style="background-color:#12A7C1">
+<form class="center" action="/perform_abusedetec" method="post">
+  <label> Type your text here</label><br>
+  <textarea name="abuse_text"></textarea><br>
+  <input type="submit" value="Perform AD">
+</form>
+{% if response %}
+    <p>abusive: {{ response['abusive']|round(2) }}</p>
+    <p>hate_speech: {{ response['hate_speech']|round(2) }}</p>
+    <p>neither: {{ response['neither']|round(2) }}</p>
+{% endif %}
+
+</body>
+</html>

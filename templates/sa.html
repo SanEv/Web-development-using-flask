@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+      .center {
+        text-align: center;
+      }
+
+      form {
+
+        padding-top: 300px;
+        font-size: 40px;
+        }
+        input[type="submit"] {
+            font-size: 25px;
+         }
+         p {
+         text-align: center;
+      }
+    </style>
+    <meta charset="UTF-8">
+    <title>Sentiment Analysis</title>
+</head>
+<body style="background-color:#12A7C1">
+<form class="center" action="/perform_sa" method="post">
+  <label> Type your text here</label><br>
+  <textarea name="sa_text"></textarea><br>
+  <input type="submit" value="Perform SA">
+</form>
+
+
+{% if response %}
+    <p>negative: {{ response['sentiment']['negative']|round(2) }}</p>
+    <p>neutral: {{ response['sentiment']['neutral']|round(2) }}</p>
+    <p>positive: {{ response['sentiment']['positive']|round(2) }}</p>
+{% endif %}
+
+</body>
+</html>
